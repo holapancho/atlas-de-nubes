@@ -70,6 +70,16 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 /* ── Dividers ── */
 .section-divider{border:none;height:1px;background:linear-gradient(to right,transparent,rgba(139,164,192,.15),transparent);margin:0;}
 
+/* ── Borges quote ── */
+.borges-quote{padding:3.5rem 2rem;text-align:center;
+  border-top:1px solid rgba(200,169,110,.12);border-bottom:1px solid rgba(200,169,110,.12);
+  background:rgba(200,169,110,.018);}
+.bq-rule{width:28px;height:1px;background:var(--gold);opacity:.35;margin:0 auto 2rem;}
+.bq-text{font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(1.2rem,3vw,1.75rem);color:var(--cloud);line-height:1.75;
+  max-width:620px;margin:0 auto 1.4rem;white-space:pre-line;opacity:.88;}
+.bq-attr{font-family:'Jost',sans-serif;font-weight:200;font-size:.6rem;
+  letter-spacing:.38em;text-transform:uppercase;color:var(--gold);opacity:.65;}
 /* ── Weather Symbols ── */
 .symbols-bg{background:linear-gradient(180deg,#08111e 0%,var(--navy) 100%);}
 .symbols-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem;margin-top:0;}
@@ -225,6 +235,13 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
     <span class="es">Explorar</span><span class="en">Explore</span>
     <div class="scroll-line"></div>
   </div>
+</div>
+
+<!-- ══════════════════════════════════════ BORGES QUOTE -->
+<div class="borges-quote">
+  <div class="bq-rule"></div>
+  <p class="bq-text" id="js-bq-text"></p>
+  <p class="bq-attr" id="js-bq-attr"></p>
 </div>
 
 <!-- ══════════════════════════════════════ WEATHER SYMBOLS -->
@@ -1208,6 +1225,27 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
 </footer>
 
 <script>
+// ── Borges random quote ─────────────────────────────────────
+const borgesVersos = [
+  { text: "No habrá una sola cosa que no sea\nuna nube.", part: "I" },
+  { text: "El día es un dudoso laberinto.", part: "I" },
+  { text: "Somos los que se van.\nLa numerosa nube que se deshace en el poniente\nes nuestra imagen.", part: "I" },
+  { text: "Incesantemente\nla rosa se convierte en otra rosa.", part: "I" },
+  { text: "Eres nube, eres mar, eres olvido.\nEres también aquello que has perdido.", part: "I" },
+  { text: "Lo son las catedrales\nde vasta piedra y bíblicos cristales\nque el tiempo allanará.", part: "I" },
+  { text: "Por el aire andan plácidas montañas\no cordilleras trágicas de sombra\nque oscurecen el día.", part: "II" },
+  { text: "¿Qué son las nubes? ¿Una arquitectura\ndel azar?", part: "II" },
+  { text: "Quizá la nube sea no menos vana\nque el hombre que la mira en la mañana.", part: "II" },
+  { text: "Esa nube de una tarde\nen su palabra resplandece y arde\ny la seguimos viendo todavía.", part: "II" },
+  { text: "Las formas suelen ser extrañas.", part: "II" },
+  { text: "Son hilos de la trama oscura.", part: "II" },
+];
+(function() {
+  const v = borgesVersos[Math.floor(Math.random() * borgesVersos.length)];
+  document.getElementById('js-bq-text').textContent = v.text;
+  document.getElementById('js-bq-attr').innerHTML =
+    `&laquo;Las Nubes&raquo; (${v.part}) &middot; Jorge Luis Borges &middot; <em>Los conjurados</em>, 1985`;
+})();
 // ── Language toggle ─────────────────────────────────────────
 let currentLang = localStorage.getItem('atlas-lang') || 'es';
 function setLang(lang) {
