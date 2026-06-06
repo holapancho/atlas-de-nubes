@@ -236,12 +236,12 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
   font-family:'Jost',sans-serif;font-weight:200;font-size:.52rem;letter-spacing:.18em;
   text-transform:uppercase;color:var(--mist);opacity:.4;}
 @media(hover:none){.tap-hint{display:block;}}
-/* close button inside hover panel on touch */
+/* close button — visible whenever card is active (tap-opened) */
 .hover-close{display:none;position:absolute;top:.7rem;right:.85rem;
   background:none;border:none;cursor:pointer;color:var(--mist);opacity:.5;
-  font-size:1rem;line-height:1;padding:.2rem;}
+  font-size:1rem;line-height:1;padding:.4rem;}
 .hover-close:hover{opacity:1;color:var(--cloud);}
-@media(hover:none){.hover-close{display:block;}}
+.cloud-card.active .hover-close,.var-card.active .hover-close{display:block;}
 .hover-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.55rem;color:var(--gold);margin-bottom:1rem;line-height:1;}
 .hover-poem{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;color:var(--cloud);line-height:1.9;opacity:.9;}
 .hover-desc{font-family:'Jost',sans-serif;font-weight:200;font-size:.75rem;color:var(--cloud);line-height:1.7;opacity:.85;margin-top:.5rem;}
