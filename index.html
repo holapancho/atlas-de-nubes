@@ -57,6 +57,17 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 @keyframes dropLine{0%,100%{transform:scaleY(1) translateY(0);opacity:.6;}50%{transform:scaleY(1.15) translateY(4px);opacity:1;}}
 .scroll-line{width:1px;height:38px;background:linear-gradient(to bottom,var(--mist),transparent);transform-origin:top;animation:dropLine 2.2s ease-in-out infinite;}
 
+/* ── Site nav ── */
+#site-nav{position:sticky;top:0;z-index:150;background:rgba(6,10,20,.94);
+  backdrop-filter:blur(12px);border-bottom:1px solid rgba(139,164,192,.1);
+  display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  padding:0 1.2rem;scrollbar-width:none;}
+#site-nav::-webkit-scrollbar{display:none;}
+.nav-pill{display:inline-flex;align-items:center;padding:.6rem .9rem;flex-shrink:0;
+  font-family:'Jost',sans-serif;font-weight:200;font-size:.6rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--mist);opacity:.55;text-decoration:none;
+  border-bottom:1px solid transparent;transition:color .2s,opacity .2s,border-color .2s;white-space:nowrap;}
+.nav-pill:hover,.nav-pill.active{color:var(--gold);opacity:1;border-bottom-color:rgba(200,169,110,.6);}
 /* ── Identifier trigger (hero button) ── */
 .id-trigger{margin-top:2.4rem;background:rgba(200,169,110,.08);border:1px solid rgba(200,169,110,.35);
   border-radius:4px;cursor:pointer;color:var(--gold);padding:.75rem 1.8rem;
@@ -115,6 +126,12 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
   font-weight:200;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
   transition:background .2s,border-color .2s;}
 .id-res-cta:hover{background:rgba(200,169,110,.1);border-color:rgba(200,169,110,.7);}
+.id-res-share{background:none;border:1px solid rgba(139,164,192,.2);border-radius:3px;
+  cursor:pointer;color:var(--mist);padding:.6rem 1.1rem;font-family:'Jost',sans-serif;
+  font-weight:200;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  transition:border-color .2s,color .2s;display:inline-flex;align-items:center;gap:.5rem;}
+.id-res-share:hover{border-color:rgba(139,164,192,.5);color:var(--cloud);}
+.id-res-share svg{width:13px;height:13px;flex-shrink:0;}
 .id-res-again{background:none;border:1px solid rgba(139,164,192,.2);border-radius:3px;
   cursor:pointer;color:var(--mist);padding:.6rem 1.4rem;font-family:'Jost',sans-serif;
   font-weight:200;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
@@ -374,8 +391,17 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
   <p class="bq-attr" id="js-bq-attr"></p>
 </div>
 
+<!-- ══════════════════════════════════════ SITE NAV -->
+<nav id="site-nav">
+  <a href="#sec-clima" class="nav-pill"><span class="es">Clima</span><span class="en">Weather</span></a>
+  <a href="#sec-altitud" class="nav-pill"><span class="es">Altitud</span><span class="en">Altitude</span></a>
+  <a href="#sec-generos" class="nav-pill"><span class="es">Géneros</span><span class="en">Genera</span></a>
+  <a href="#sec-tipos" class="nav-pill"><span class="es">Tipos</span><span class="en">Types</span></a>
+  <a href="#sec-curiosidades" class="nav-pill"><span class="es">Curiosidades</span><span class="en">Facts</span></a>
+</nav>
+
 <!-- ══════════════════════════════════════ WEATHER SYMBOLS -->
-<div class="symbols-bg">
+<div id="sec-clima" class="symbols-bg">
 <div class="section-wrap">
   <p class="section-label reveal"><span class="es">Simbología del Tiempo</span><span class="en">Weather Symbols</span></p>
   <h2 class="section-title reveal"><span class="es">Cuatro estados del cielo</span><span class="en">Four states of the sky</span></h2>
@@ -459,7 +485,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
 <hr class="section-divider">
 
 <!-- ══════════════════════════════════════ ALTITUDE DIAGRAM -->
-<div class="altitude-bg">
+<div id="sec-altitud" class="altitude-bg">
 <div class="section-wrap">
   <p class="section-label reveal"><span class="es">Clasificación por Altura</span><span class="en">Classification by Altitude</span></p>
   <h2 class="section-title reveal"><span class="es">Las cuatro regiones del cielo</span><span class="en">The four regions of the sky</span></h2>
@@ -552,7 +578,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
 <hr class="section-divider">
 
 <!-- ══════════════════════════════════════ 10 GENUS CARDS -->
-<div>
+<div id="sec-generos">
 <div class="section-wrap">
   <p class="section-label reveal"><span class="es">Diez géneros · OMM</span><span class="en">Ten genera · WMO</span></p>
   <h2 class="section-title reveal"><span class="es">Los géneros del cielo</span><span class="en">The genera of the sky</span></h2>
@@ -913,7 +939,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
 
 <!-- ══════════════════════════════════════ VARIETIES & SPECIAL FEATURES -->
 <div>
-<div class="section-wrap">
+<div id="sec-tipos" class="section-wrap">
   <p class="section-label reveal"><span class="es">Variedades y Características</span><span class="en">Varieties &amp; Features</span></p>
   <h2 class="section-title reveal"><span class="es">Tipos específicos de nubes</span><span class="en">Specific cloud types</span></h2>
 
@@ -1344,7 +1370,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
 <hr class="section-divider">
 
 <!-- ══════════════════════════════════════ CURIOSIDADES -->
-<div class="altitude-bg">
+<div id="sec-curiosidades" class="altitude-bg">
 <div class="section-wrap">
   <p class="section-label reveal"><span class="es">Datos sorprendentes</span><span class="en">Surprising facts</span></p>
   <h2 class="section-title reveal"><span class="es">Curiosidades</span><span class="en">Did you know?</span></h2>
@@ -1868,8 +1894,10 @@ function renderStep(stepId, animate) {
     const l = lang();
     const name = l==='es' ? res.nameEs : res.nameEn;
     const latinLbl = l==='es' ? 'Nombre en latín' : 'Latin name';
-    const cta  = l==='es' ? 'Ver en el atlas' : 'See in atlas';
+    const cta   = l==='es' ? 'Ver en el atlas' : 'See in atlas';
     const again = l==='es' ? 'Identificar otra' : 'Identify another';
+    const share = l==='es' ? 'Compartir' : 'Share';
+    const shareSVG = `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="3" r="1.5"/><circle cx="12" cy="13" r="1.5"/><circle cx="3" cy="8" r="1.5"/><line x1="10.6" y1="4" x2="4.4" y2="7"/><line x1="10.6" y1="12" x2="4.4" y2="9"/></svg>`;
     swap(`
       <div class="id-res-label"><span class="es">Encontramos tu nube</span><span class="en">We found your cloud</span></div>
       <div class="id-res-name">${name}</div>
@@ -1878,6 +1906,7 @@ function renderStep(stepId, animate) {
       <div class="id-res-desc"><span class="es">${res.descEs}</span><span class="en">${res.descEn}</span></div>
       <div class="id-res-actions">
         <button class="id-res-cta" onclick="goToCard('${res.g}')">${cta}</button>
+        <button class="id-res-share" onclick="shareResult('${name}','${res.latin}')">${shareSVG}${share}</button>
         <button class="id-res-again" onclick="restartIdentifier()">${again}</button>
       </div>
     `);
@@ -1919,6 +1948,53 @@ function goToCard(genus) {
   const card = document.querySelector(`.cloud-card[data-genus="${genus}"]`);
   if (card) { setTimeout(() => card.scrollIntoView({behavior:'smooth',block:'center'}), 300); }
 }
+// ── Share identifier result ──────────────────────────────────
+function shareResult(name, latin) {
+  const l = lang();
+  const text = l === 'es'
+    ? `Identifiqué un ${name} (${latin}) con el Atlas de Nubes`
+    : `I identified a ${name} (${latin}) with the Cloud Atlas`;
+  const url = location.href.split('#')[0];
+  if (navigator.share) {
+    navigator.share({ title: 'Atlas de Nubes', text, url }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(`${text} · ${url}`).then(() => {
+      const btn = document.querySelector('.id-res-share');
+      if (btn) { const prev = btn.innerHTML; btn.textContent = l==='es' ? '¡Copiado!' : 'Copied!'; setTimeout(() => btn.innerHTML = prev, 2000); }
+    }).catch(() => {});
+  }
+}
+// ── Nav active state ─────────────────────────────────────────
+(function initNav() {
+  const pills = document.querySelectorAll('.nav-pill');
+  const sections = ['sec-clima','sec-altitud','sec-generos','sec-tipos','sec-curiosidades']
+    .map(id => document.getElementById(id)).filter(Boolean);
+  if (!sections.length) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        pills.forEach(p => p.classList.remove('active'));
+        const active = document.querySelector(`.nav-pill[href="#${e.target.id}"]`);
+        if (active) { active.classList.add('active'); active.scrollIntoView({inline:'center',block:'nearest'}); }
+      }
+    });
+  }, { threshold: 0.2 });
+  sections.forEach(s => obs.observe(s));
+})();
 </script>
+<style media="print">
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  body{background:#fff!important;color:#111!important;}
+  #site-nav,#lang-btn,#id-modal,.scroll-hint,.id-trigger,.borges-quote,
+  .symbols-bg,.attribution-bg,.altitude-bg,.section-divider,
+  .card-hover,.card-forecast,.speak-btn,.tap-hint,footer{display:none!important;}
+  .cloud-card{background:#f5f5f5!important;border:1px solid #ccc!important;break-inside:avoid;page-break-inside:avoid;}
+  .card-name,.card-name-latin,.card-phonetic,.card-code{color:#111!important;}
+  .clouds-grid{grid-template-columns:repeat(3,1fr)!important;}
+  .section-title,.section-label{color:#111!important;}
+  .hero-title,.hero-subtitle,.hero-tagline{color:#111!important;}
+  .curi-card{background:#f9f9f9!important;border:1px solid #ddd!important;break-inside:avoid;}
+  .curi-code,.curi-fact{color:#111!important;}
+</style>
 </body>
 </html>
