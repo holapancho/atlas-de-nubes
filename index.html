@@ -1401,10 +1401,6 @@ setLang(currentLang);
     if (hoverEl) hoverEl.appendChild(closeBtn);
   });
 
-  // touch-only toggle (pointer: coarse = touch screen)
-  const isTouch = window.matchMedia('(hover: none)').matches;
-  if (!isTouch) return;
-
   function closeAll(except) {
     document.querySelectorAll('.cloud-card.active, .var-card.active').forEach(c => {
       if (c !== except) c.classList.remove('active');
@@ -1412,12 +1408,7 @@ setLang(currentLang);
   }
 
   document.querySelectorAll('.cloud-card, .var-card').forEach(card => {
-    card.addEventListener('click', function(e) {
-      if (e.target.closest('.speak-btn') || e.target.closest('.hover-close')) return;
-      if (this.classList.contains('active')) return; // let close btn handle it
-      closeAll(this);
-      this.classList.add('active');
-    });
+    // close button always gets a listener (CSS hides it on desktop)
     const closeBtn = card.querySelector('.hover-close');
     if (closeBtn) {
       closeBtn.addEventListener('click', function(e) {
@@ -1425,6 +1416,16 @@ setLang(currentLang);
         card.classList.remove('active');
       });
     }
+    // card tap: open panel (skip if tapping speak or close)
+    card.addEventListener('click', function(e) {
+      if (e.target.closest('.speak-btn') || e.target.closest('.hover-close')) return;
+      if (this.classList.contains('active')) {
+        this.classList.remove('active');
+        return;
+      }
+      closeAll(this);
+      this.classList.add('active');
+    });
   });
 })();
 // ── Stars ───────────────────────────────────────────────────
