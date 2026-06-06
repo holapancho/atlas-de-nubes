@@ -197,11 +197,11 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
 .card-phonetic{font-family:'Jost',sans-serif;font-weight:200;font-size:.58rem;
   color:var(--mist);opacity:.5;letter-spacing:.06em;margin:2px 0 3px;
   display:flex;align-items:center;gap:.2rem;}
-.speak-btn{background:none;border:none;cursor:pointer;color:var(--mist);
-  opacity:.38;padding:.18rem;transition:opacity .2s,color .2s;
-  flex-shrink:0;width:22px;height:22px;display:flex;align-items:center;justify-content:center;margin-left:.3rem;}
-.speak-btn:hover{opacity:.85;color:var(--gold);}
-.speak-btn svg{width:13px;height:13px;}
+.speak-btn{background:none;border:1px solid rgba(139,164,192,.18);border-radius:4px;cursor:pointer;
+  color:var(--mist);opacity:.55;padding:.28rem .55rem;transition:opacity .2s,color .2s,border-color .2s;
+  display:inline-flex;align-items:center;gap:.2rem;margin-bottom:.9rem;align-self:flex-start;}
+.speak-btn:hover{opacity:1;color:var(--gold);border-color:rgba(200,169,110,.4);}
+.speak-btn svg{width:12px;height:12px;flex-shrink:0;}
 /* ── Forecast bar ── */
 .card-forecast{display:flex;align-items:center;gap:.5rem;margin-top:.85rem;padding-top:.7rem;border-top:1px solid rgba(139,164,192,.1);}
 .fc-icon{width:18px;height:18px;flex-shrink:0;}
@@ -1311,29 +1311,32 @@ const fcIcons = {
     if (!p) return;
     const nameEl = card.querySelector('.card-name');
     if (!nameEl) return;
-    // IPA line
+    // IPA line on card front (visual only)
     const ipaEl = document.createElement('div');
     ipaEl.className = 'card-phonetic';
     ipaEl.textContent = p.ipa;
     nameEl.after(ipaEl);
-    // speak button
-    const btn = document.createElement('button');
-    btn.className = 'speak-btn';
-    btn.title = 'Escuchar pronunciación';
-    btn.innerHTML = speakerSVG;
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      if (!window.speechSynthesis) return;
-      const utt = new SpeechSynthesisUtterance(p.name);
-      utt.lang = 'la';
-      utt.rate = 0.85;
-      speechSynthesis.cancel();
-      speechSynthesis.speak(utt);
-      btn.style.color = 'var(--gold)';
-      btn.style.opacity = '0.9';
-      utt.onend = () => { btn.style.color = ''; btn.style.opacity = ''; };
-    });
-    ipaEl.appendChild(btn);
+    // speak button inside hover panel (accessible on hover)
+    const hoverEl = card.querySelector('.card-hover');
+    if (hoverEl) {
+      const btn = document.createElement('button');
+      btn.className = 'speak-btn';
+      btn.title = 'Escuchar pronunciación';
+      btn.innerHTML = speakerSVG + `<span class="es" style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-family:\'Jost\',sans-serif;font-weight:300;margin-left:.3rem;">Escuchar</span><span class="en" style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-family:\'Jost\',sans-serif;font-weight:300;margin-left:.3rem;">Listen</span>`;
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (!window.speechSynthesis) return;
+        const utt = new SpeechSynthesisUtterance(p.name);
+        utt.lang = 'la';
+        utt.rate = 0.85;
+        speechSynthesis.cancel();
+        speechSynthesis.speak(utt);
+        btn.style.color = 'var(--gold)';
+        btn.style.opacity = '1';
+        utt.onend = () => { btn.style.color = ''; btn.style.opacity = ''; };
+      });
+      hoverEl.prepend(btn);
+    }
   });
 })();
 // ── Borges random quote ─────────────────────────────────────
