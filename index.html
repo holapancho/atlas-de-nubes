@@ -193,6 +193,15 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
 .footer-attr{font-family:'Jost',sans-serif;font-weight:200;font-size:.6rem;letter-spacing:.45em;
   text-transform:uppercase;color:var(--mist);opacity:.35;}
 
+/* ── Phonetics ── */
+.card-phonetic{font-family:'Jost',sans-serif;font-weight:200;font-size:.58rem;
+  color:var(--mist);opacity:.5;letter-spacing:.06em;margin:2px 0 3px;
+  display:flex;align-items:center;gap:.2rem;}
+.speak-btn{background:none;border:none;cursor:pointer;color:var(--mist);
+  opacity:.38;padding:.18rem;transition:opacity .2s,color .2s;
+  flex-shrink:0;width:22px;height:22px;display:flex;align-items:center;justify-content:center;margin-left:.3rem;}
+.speak-btn:hover{opacity:.85;color:var(--gold);}
+.speak-btn svg{width:13px;height:13px;}
 /* ── Forecast bar ── */
 .card-forecast{display:flex;align-items:center;gap:.5rem;margin-top:.85rem;padding-top:.7rem;border-top:1px solid rgba(139,164,192,.1);}
 .fc-icon{width:18px;height:18px;flex-shrink:0;}
@@ -411,7 +420,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
         <div class="hover-title">Cirrus</div>
         <div class="hover-poem es">Filamentos de hielo que escriben<br>en el cielo su caligrafía blanca.<br>Presagios del viento en las alturas,<br>testigos del sol que se inclina.</div>
         <div class="hover-poem en">Ice filaments writing<br>their white calligraphy in the sky.<br>Heralds of wind in the heights,<br>witnesses to a tilting sun.</div>
-        <div class="hover-wmo">OMM/WMO · <span class="es">Nivel Alto · Cristales de hielo</span><span class="en">High level · Ice crystals</span></div>
+        <div class="hover-wmo"><span class="es">Nivel Alto · Cristales de hielo</span><span class="en">High level · Ice crystals</span></div>
       </div>
     </div>
 
@@ -457,7 +466,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
         <div class="hover-title">Cirrocumulus</div>
         <div class="hover-poem es">Mar de escamas plateadas,<br>piel del cielo erizada de frío.<br>Cada glóbulo, una respiración<br>suspendida en el umbral del vacío.</div>
         <div class="hover-poem en">A sea of silver scales,<br>the sky's skin bristling with cold.<br>Each globule, a breath<br>suspended at the edge of void.</div>
-        <div class="hover-wmo">OMM/WMO · <span class="es">Nivel Alto · Escamas de hielo</span><span class="en">High level · Ice scales</span></div>
+        <div class="hover-wmo"><span class="es">Nivel Alto · Escamas de hielo</span><span class="en">High level · Ice scales</span></div>
       </div>
     </div>
 
@@ -490,7 +499,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
         <div class="hover-title">Cirrostratus</div>
         <div class="hover-poem es">Velo translúcido sobre el mundo,<br>tejido de cristal que corona al sol.<br>El halo que promete lluvia<br>es el anuncio más hermoso del dolor.</div>
         <div class="hover-poem en">Translucent veil over the world,<br>crystal fabric crowning the sun.<br>The halo that promises rain<br>is the most beautiful herald of sorrow.</div>
-        <div class="hover-wmo">OMM/WMO · <span class="es">Nivel Alto · Velo con halo</span><span class="en">High level · Ice veil with halo</span></div>
+        <div class="hover-wmo"><span class="es">Nivel Alto · Velo con halo</span><span class="en">High level · Ice veil with halo</span></div>
       </div>
     </div>
 
@@ -526,7 +535,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
         <div class="hover-title">Altocumulus</div>
         <div class="hover-poem es">Rebaños de nubes pastando<br>en la media altura sobre los valles.<br>La tarde que los mece suele traer<br>tormentas de verano sin fardos.</div>
         <div class="hover-poem en">Herds of clouds grazing<br>at mid-height above the valleys.<br>The afternoon that rocks them<br>often brings summer storms.</div>
-        <div class="hover-wmo">OMM/WMO · <span class="es">Nivel Medio · Agua y hielo</span><span class="en">Middle level · Water and ice</span></div>
+        <div class="hover-wmo"><span class="es">Nivel Medio · Agua y hielo</span><span class="en">Middle level · Water and ice</span></div>
       </div>
     </div>
 
@@ -559,7 +568,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
         <div class="hover-title">Altostratus</div>
         <div class="hover-poem es">Sábana gris que borra el horizonte,<br>el sol convertido en moneda opaca.<br>Ni una sombra cae desde el cielo,<br>la luz es una herida que no sangra.</div>
         <div class="hover-poem en">Grey sheet erasing the horizon,<br>the sun turned to an opaque coin.<br>Not a shadow falls from the sky,<br>the light is a wound that does not bleed.</div>
-        <div class="hover-wmo">OMM/WMO · <span class="es">Nivel Medio · Capa uniforme</span><span class="en">Middle level · Uniform layer</span></div>
+        <div class="hover-wmo"><span class="es">Nivel Medio · Capa uniforme</span><span class="en">Middle level · Uniform layer</span></div>
       </div>
     </div>
 
@@ -594,7 +603,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
         <div class="hover-title">Nimbostratus</div>
         <div class="hover-poem es">La tormenta que no ruge, solo llora,<br>manta oscura que apaga toda orilla.<br>Lluvia sin principio ni final,<br>el cielo que se entrega a la vigilia.</div>
         <div class="hover-poem en">The storm that does not roar, only weeps,<br>dark blanket extinguishing every shore.<br>Rain with no beginning or end,<br>the sky surrendering to the vigil.</div>
-        <div class="hover-wmo">OMM/WMO · <span class="es">Precipitación continua</span><span class="en">Continuous precipitation</span></div>
+        <div class="hover-wmo"><span class="es">Precipitación continua</span><span class="en">Continuous precipitation</span></div>
       </div>
     </div>
 
@@ -626,7 +635,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
         <div class="hover-title">Stratocumulus</div>
         <div class="hover-poem es">Manta gris sobre los tejados,<br>el cielo más cercano y más pesado.<br>Sus grietas dejan pasar retazos de oro,<br>la luz que se filtra como una pregunta callada.</div>
         <div class="hover-poem en">Grey blanket over the rooftops,<br>the closest and heaviest sky.<br>Its cracks let through scraps of gold,<br>light filtering like a silent question.</div>
-        <div class="hover-wmo">OMM/WMO · <span class="es">Nivel Bajo · Nube más frecuente</span><span class="en">Low level · Most common cloud</span></div>
+        <div class="hover-wmo"><span class="es">Nivel Bajo · Nube más frecuente</span><span class="en">Low level · Most common cloud</span></div>
       </div>
     </div>
 
@@ -653,7 +662,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
         <div class="hover-title">Stratus</div>
         <div class="hover-poem es">Niebla elevada que no sabe<br>si es cielo o es tierra lo que envuelve.<br>La ciudad desaparece en su abrazo,<br>el mundo se vuelve rumor y humo leve.</div>
         <div class="hover-poem en">Elevated fog that does not know<br>whether it wraps sky or earth.<br>The city disappears in its embrace,<br>the world becomes rumor and thin smoke.</div>
-        <div class="hover-wmo">OMM/WMO · <span class="es">Nivel Bajo · Niebla elevada</span><span class="en">Low level · Elevated fog</span></div>
+        <div class="hover-wmo"><span class="es">Nivel Bajo · Niebla elevada</span><span class="en">Low level · Elevated fog</span></div>
       </div>
     </div>
 
@@ -687,7 +696,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
         <div class="hover-title">Cumulus</div>
         <div class="hover-poem es">Torres de nata sobre el verano,<br>nubes de los niños y los pintores.<br>Su base plana corta el sueño del suelo,<br>su cúpula toca lo que el ojo añora.</div>
         <div class="hover-poem en">Cream towers above summer,<br>clouds of children and painters.<br>Their flat base cuts the ground's dream,<br>their dome touches what the eye longs for.</div>
-        <div class="hover-wmo">OMM/WMO · <span class="es">Nivel Bajo · Convección</span><span class="en">Low level · Convection</span></div>
+        <div class="hover-wmo"><span class="es">Nivel Bajo · Convección</span><span class="en">Low level · Convection</span></div>
       </div>
     </div>
 
@@ -727,7 +736,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
         <div class="hover-title">Cumulonimbus</div>
         <div class="hover-poem es">El dios oscuro de la atmósfera,<br>yunque de hielo clavado en el cielo.<br>Relámpagos que son el idioma<br>de lo que el aire no sabe decir en silencio.</div>
         <div class="hover-poem en">The dark god of the atmosphere,<br>ice anvil driven into the sky.<br>Lightning bolts that are the language<br>of what air cannot say in silence.</div>
-        <div class="hover-wmo">OMM/WMO · <span class="es">Vertical · Tormenta severa</span><span class="en">Vertical · Severe storm</span></div>
+        <div class="hover-wmo"><span class="es">Vertical · Tormenta severa</span><span class="en">Vertical · Severe storm</span></div>
       </div>
     </div>
 
@@ -1280,6 +1289,51 @@ const fcIcons = {
     fc.innerHTML = `<span class="es">${d.descEs}</span><span class="en">${d.descEn}</span>`;
     const wmo = card.querySelector('.hover-wmo');
     wmo.parentNode.insertBefore(fc, wmo);
+  });
+})();
+// ── Phonetics ───────────────────────────────────────────────
+(function injectPhonetics() {
+  const ph = {
+    ci:  { ipa: '/ˈsɪr.əs/', name: 'Cirrus' },
+    cc:  { ipa: '/ˌsɪr.oʊˈkjuː.mjʊ.ləs/', name: 'Cirrocumulus' },
+    cs:  { ipa: '/ˌsɪr.oʊˈstreɪ.təs/', name: 'Cirrostratus' },
+    ac:  { ipa: '/ˌæl.toʊˈkjuː.mjʊ.ləs/', name: 'Altocumulus' },
+    as:  { ipa: '/ˌæl.toʊˈstreɪ.təs/', name: 'Altostratus' },
+    ns:  { ipa: '/ˌnɪm.boʊˈstreɪ.təs/', name: 'Nimbostratus' },
+    sc:  { ipa: '/ˌstreɪ.toʊˈkjuː.mjʊ.ləs/', name: 'Stratocumulus' },
+    st:  { ipa: '/ˈstreɪ.təs/', name: 'Stratus' },
+    cu:  { ipa: '/ˈkjuː.mjʊ.ləs/', name: 'Cumulus' },
+    cb:  { ipa: '/ˌkjuː.mjʊ.loʊˈnɪm.bəs/', name: 'Cumulonimbus' },
+  };
+  const speakerSVG = `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M2,5.5 L2,10.5 L5,10.5 L9,13.5 L9,2.5 L5,5.5 Z" fill="currentColor"/><path d="M11,5.5 Q13.5,8 11,10.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>`;
+  document.querySelectorAll('.cloud-card[data-genus]').forEach(card => {
+    const p = ph[card.dataset.genus];
+    if (!p) return;
+    const nameEl = card.querySelector('.card-name');
+    if (!nameEl) return;
+    // IPA line
+    const ipaEl = document.createElement('div');
+    ipaEl.className = 'card-phonetic';
+    ipaEl.textContent = p.ipa;
+    nameEl.after(ipaEl);
+    // speak button
+    const btn = document.createElement('button');
+    btn.className = 'speak-btn';
+    btn.title = 'Escuchar pronunciación';
+    btn.innerHTML = speakerSVG;
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (!window.speechSynthesis) return;
+      const utt = new SpeechSynthesisUtterance(p.name);
+      utt.lang = 'la';
+      utt.rate = 0.85;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utt);
+      btn.style.color = 'var(--gold)';
+      btn.style.opacity = '0.9';
+      utt.onend = () => { btn.style.color = ''; btn.style.opacity = ''; };
+    });
+    ipaEl.appendChild(btn);
   });
 })();
 // ── Borges random quote ─────────────────────────────────────
