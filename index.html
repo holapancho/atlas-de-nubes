@@ -193,6 +193,14 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
 .footer-attr{font-family:'Jost',sans-serif;font-weight:200;font-size:.6rem;letter-spacing:.45em;
   text-transform:uppercase;color:var(--mist);opacity:.35;}
 
+/* ── Forecast bar ── */
+.card-forecast{display:flex;align-items:center;gap:.5rem;margin-top:.85rem;padding-top:.7rem;border-top:1px solid rgba(139,164,192,.1);}
+.fc-icon{width:18px;height:18px;flex-shrink:0;}
+.fc-label{font-family:'Jost',sans-serif;font-weight:200;font-size:.62rem;letter-spacing:.06em;}
+.hover-forecast{margin:.6rem 0 .8rem;padding:.6rem .9rem;border-radius:4px;
+  background:rgba(139,164,192,.06);border:1px solid rgba(139,164,192,.12);
+  font-family:'Jost',sans-serif;font-weight:200;font-size:.72rem;
+  color:var(--cloud);opacity:.85;line-height:1.6;max-width:240px;text-align:center;}
 /* ── Reveal ── */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
@@ -377,7 +385,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
   <div class="cards-grid">
 
     <!-- ① CIRRUS -->
-    <div class="cloud-card">
+    <div class="cloud-card" data-genus="ci">
       <div class="card-bg" style="background:linear-gradient(145deg,#091425 0%,#0d2344 55%,#112840 100%)"></div>
       <div class="card-body">
         <div class="card-top">
@@ -408,7 +416,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
     </div>
 
     <!-- ② CIRROCUMULUS -->
-    <div class="cloud-card">
+    <div class="cloud-card" data-genus="cc">
       <div class="card-bg" style="background:linear-gradient(145deg,#0a1430 0%,#101e42 55%,#0d1c3c 100%)"></div>
       <div class="card-body">
         <div class="card-top">
@@ -454,7 +462,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
     </div>
 
     <!-- ③ CIRROSTRATUS -->
-    <div class="cloud-card">
+    <div class="cloud-card" data-genus="cs">
       <div class="card-bg" style="background:linear-gradient(145deg,#0c1930 0%,#152848 55%,#102038 100%)"></div>
       <div class="card-body">
         <div class="card-top">
@@ -487,7 +495,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
     </div>
 
     <!-- ④ ALTOCUMULUS -->
-    <div class="cloud-card">
+    <div class="cloud-card" data-genus="ac">
       <div class="card-bg" style="background:linear-gradient(145deg,#091828 0%,#0f2035 55%,#0c1c30 100%)"></div>
       <div class="card-body">
         <div class="card-top">
@@ -523,7 +531,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
     </div>
 
     <!-- ⑤ ALTOSTRATUS -->
-    <div class="cloud-card">
+    <div class="cloud-card" data-genus="as">
       <div class="card-bg" style="background:linear-gradient(145deg,#0c1725 0%,#172738 55%,#102030 100%)"></div>
       <div class="card-body">
         <div class="card-top">
@@ -556,7 +564,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
     </div>
 
     <!-- ⑥ NIMBOSTRATUS -->
-    <div class="cloud-card">
+    <div class="cloud-card" data-genus="ns">
       <div class="card-bg" style="background:linear-gradient(145deg,#070c16 0%,#0f1820 55%,#0a1318 100%)"></div>
       <div class="card-body">
         <div class="card-top">
@@ -591,7 +599,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
     </div>
 
     <!-- ⑦ STRATOCUMULUS -->
-    <div class="cloud-card">
+    <div class="cloud-card" data-genus="sc">
       <div class="card-bg" style="background:linear-gradient(145deg,#091420 0%,#142432 55%,#0f1e2c 100%)"></div>
       <div class="card-body">
         <div class="card-top">
@@ -623,7 +631,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
     </div>
 
     <!-- ⑧ STRATUS -->
-    <div class="cloud-card">
+    <div class="cloud-card" data-genus="st">
       <div class="card-bg" style="background:linear-gradient(145deg,#08121e 0%,#0f1e2c 55%,#0a1620 100%)"></div>
       <div class="card-body">
         <div class="card-top">
@@ -650,7 +658,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
     </div>
 
     <!-- ⑨ CUMULUS -->
-    <div class="cloud-card">
+    <div class="cloud-card" data-genus="cu">
       <div class="card-bg" style="background:linear-gradient(145deg,#091728 0%,#183050 55%,#102040 100%)"></div>
       <div class="card-body">
         <div class="card-top">
@@ -684,7 +692,7 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
     </div>
 
     <!-- ⑩ CUMULONIMBUS -->
-    <div class="cloud-card">
+    <div class="cloud-card" data-genus="cb">
       <div class="card-bg" style="background:linear-gradient(145deg,#070b16 0%,#111826 55%,#0d1422 100%)"></div>
       <div class="card-body">
         <div class="card-top">
@@ -1211,24 +1219,16 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
 <!-- ══════════════════════════════════════ FOOTER -->
 <footer>
   <div class="footer-rule"></div>
-  <div class="footer-poem es">
-    <p>Nube que pasas sin nombre ni morada,</p>
-    <p>¿qué llevas escrito en tu vientre de agua?</p>
-    <p>Solo el viento lo sabe y no lo dice,</p>
-    <p>solo el cielo lo guarda y lo deshace.</p>
+  <div class="footer-poem">
+    <p>Eres nube, eres mar, eres olvido.</p>
+    <p>Eres también aquello que has perdido.</p>
     <p>&nbsp;</p>
-    <p>Diez formas tiene la niebla que se eleva,</p>
-    <p>diez maneras de olvidarse de la tierra.</p>
+    <p>Quizá la nube sea no menos vana</p>
+    <p>que el hombre que la mira en la mañana.</p>
   </div>
-  <div class="footer-poem en">
-    <p>Cloud passing without name or dwelling,</p>
-    <p>what do you carry written in your belly of water?</p>
-    <p>Only the wind knows and will not say,</p>
-    <p>only the sky keeps it and undoes it.</p>
-    <p>&nbsp;</p>
-    <p>Ten shapes has the mist that rises,</p>
-    <p>ten ways of forgetting the earth.</p>
-  </div>
+  <p style="font-family:'Jost',sans-serif;font-weight:200;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);opacity:.45;margin-bottom:2rem;">
+    «Las Nubes» · Jorge Luis Borges · <em style="font-style:italic">Los conjurados</em>, 1985
+  </p>
   <div class="footer-rule2"></div>
   <p class="footer-attr" style="margin-bottom:.9rem">
     <span class="es">Hecho por Francisco Rojas Morales</span>
@@ -1243,6 +1243,47 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
 </footer>
 
 <script>
+// ── Weather forecast injection ──────────────────────────────
+const fcData = {
+  ci: { type:'change',     color:'#b8a060', shortEs:'Cambio en 24–48 h',    shortEn:'Change in 24–48 h',    descEs:'Señal de frente cálido en camino. Lluvia probable en 24 a 48 horas.', descEn:'Warm front approaching. Rain likely within 24–48 hours.' },
+  cc: { type:'partly',     color:'#8ba4c0', shortEs:'Tiempo variable',       shortEn:'Variable weather',      descEs:'Generalmente estable, pero puede preceder un cambio de tiempo.', descEn:'Generally stable, but may precede a weather change.' },
+  cs: { type:'rain',       color:'#8ba4c0', shortEs:'Lluvia en 12–24 h',     shortEn:'Rain in 12–24 h',       descEs:'El halo solar o lunar que forma es señal clásica de lluvia inminente.', descEn:'The halo it forms around the sun or moon is a classic sign of imminent rain.' },
+  ac: { type:'change',     color:'#b8a060', shortEs:'Inestable',             shortEn:'Unstable',              descEs:'Si presentan torres (castellanus), espera tormentas vespertinas.', descEn:'If they show towers (castellanus), expect afternoon thunderstorms.' },
+  as: { type:'rain',       color:'#7898b8', shortEs:'Lluvia próxima',         shortEn:'Rain approaching',      descEs:'Lluvia o nieve continua en pocas horas. El sol desaparece.', descEn:'Continuous rain or snow within a few hours. The sun disappears.' },
+  ns: { type:'heavy-rain', color:'#5878a8', shortEs:'Lluvia ahora',           shortEn:'Rain now',              descEs:'Lluvia o nieve continua y persistente. Sin pausa durante horas o días.', descEn:'Continuous, persistent rain or snow. No break for hours or days.' },
+  sc: { type:'partly',     color:'#8ba4c0', shortEs:'Generalmente seco',      shortEn:'Generally dry',         descEs:'Cielo gris pero estable. Llovizna ocasional, sin precipitación intensa.', descEn:'Grey but stable sky. Occasional drizzle, no heavy rain.' },
+  st: { type:'drizzle',    color:'#8ba4c0', shortEs:'Llovizna posible',       shortEn:'Drizzle possible',      descEs:'Niebla baja o llovizna fina. Visibilidad reducida cerca del suelo.', descEn:'Low fog or light drizzle. Reduced visibility near the ground.' },
+  cu: { type:'sunny',      color:'#c8a96e', shortEs:'Buen tiempo',            shortEn:'Fair weather',          descEs:'El cúmulo pequeño es señal de cielo estable y soleado. Disfrútalo.', descEn:'Small cumulus signals a stable, sunny sky. Enjoy it.' },
+  cb: { type:'storm',      color:'#d07060', shortEs:'Tormenta severa',        shortEn:'Severe storm',          descEs:'Granizo, rayos, vientos fuertes y lluvias torrenciales. Busca refugio.', descEn:'Hail, lightning, strong winds and torrential rain. Seek shelter.' },
+};
+const fcIcons = {
+  sunny: `<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g stroke="#c8a96e" stroke-width="1.4" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3.2"/><line x1="14" y1="3.6" x2="12.4" y2="5.2"/><line x1="16.2" y1="9" x2="14" y2="9"/><line x1="14" y1="14.4" x2="12.4" y2="12.8"/><line x1="9" y1="16.2" x2="9" y2="14"/><line x1="4" y1="14.4" x2="5.6" y2="12.8"/><line x1="1.8" y1="9" x2="4" y2="9"/><line x1="4" y1="3.6" x2="5.6" y2="5.2"/></g><circle cx="9" cy="9" r="3.4" fill="#c8a96e" opacity="0.85"/></svg>`,
+  partly: `<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g stroke="#c8a96e" stroke-width="1.1" stroke-linecap="round" opacity="0.55"><line x1="4.5" y1="2" x2="4.5" y2="4"/><line x1="7.8" y1="1.5" x2="7.3" y2="3.3"/><line x1="2" y1="5.5" x2="3.8" y2="6"/></g><circle cx="4.5" cy="6.5" r="3" fill="#c8a96e" opacity="0.48"/><ellipse cx="11.5" cy="12" rx="5.8" ry="3.6" fill="#8ba4c0" opacity="0.75"/><ellipse cx="8" cy="11" rx="3.4" ry="2.9" fill="#9ab4c8" opacity="0.70"/><ellipse cx="14.2" cy="11" rx="3.8" ry="2.9" fill="#9ab4c8" opacity="0.68"/></svg>`,
+  change: `<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g stroke="#c8a96e" stroke-width="1.1" stroke-linecap="round" opacity="0.48"><line x1="4" y1="1.5" x2="4" y2="3.5"/><line x1="7" y1="1" x2="6.5" y2="3"/><line x1="1.5" y1="4.5" x2="3.5" y2="5"/></g><circle cx="4" cy="5.5" r="2.8" fill="#c8a96e" opacity="0.42"/><ellipse cx="11" cy="10.5" rx="6" ry="3.5" fill="#8ba4c0" opacity="0.65"/><ellipse cx="7.5" cy="9.5" rx="3" ry="2.8" fill="#9ab4c8" opacity="0.60"/><g stroke="#8ba4c0" stroke-linecap="round" stroke-width="1.2" opacity="0.55"><line x1="9" y1="14" x2="8.2" y2="17"/><line x1="12.5" y1="14" x2="11.7" y2="17"/></g></svg>`,
+  rain: `<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><ellipse cx="9" cy="8" rx="6.8" ry="3.8" fill="#6a8aaa" opacity="0.70"/><ellipse cx="5.5" cy="6.5" rx="3.4" ry="3" fill="#7a9ab8" opacity="0.65"/><ellipse cx="12" cy="6" rx="3.8" ry="3" fill="#7a9ab8" opacity="0.65"/><g stroke="#8ba4c0" stroke-linecap="round" stroke-width="1.5"><line x1="6" y1="12.5" x2="5.2" y2="16"/><line x1="9" y1="12.5" x2="8.2" y2="16"/><line x1="12" y1="12.5" x2="11.2" y2="16"/></g></svg>`,
+  'heavy-rain': `<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><ellipse cx="9" cy="7" rx="6.8" ry="3.6" fill="#3a5060" opacity="0.88"/><ellipse cx="5.5" cy="5.5" rx="3.4" ry="2.8" fill="#4a6070" opacity="0.82"/><ellipse cx="12" cy="5" rx="3.8" ry="2.8" fill="#4a6070" opacity="0.82"/><g stroke="#7898b8" stroke-linecap="round" stroke-width="1.5"><line x1="5" y1="11.5" x2="3.8" y2="16"/><line x1="8" y1="11.5" x2="6.8" y2="16"/><line x1="11" y1="11.5" x2="9.8" y2="16"/><line x1="14" y1="11.5" x2="12.8" y2="16"/></g></svg>`,
+  drizzle: `<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><ellipse cx="9" cy="7.5" rx="6.5" ry="3.5" fill="#6a8090" opacity="0.70"/><ellipse cx="5.5" cy="6" rx="3" ry="2.8" fill="#7a9098" opacity="0.65"/><ellipse cx="12" cy="5.5" rx="3.5" ry="2.8" fill="#7a9098" opacity="0.65"/><g fill="#8ba4c0" opacity="0.68"><circle cx="6" cy="13" r="1"/><circle cx="9" cy="14" r="1"/><circle cx="12" cy="13" r="1"/><circle cx="7.5" cy="16.5" r="0.8"/><circle cx="10.5" cy="16.5" r="0.8"/></g></svg>`,
+  storm: `<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><ellipse cx="9" cy="6.5" rx="7" ry="3.8" fill="#1e2830" opacity="0.92"/><ellipse cx="5.5" cy="5" rx="3.5" ry="3" fill="#2a3840" opacity="0.86"/><ellipse cx="12" cy="4.5" rx="4" ry="3" fill="#2a3840" opacity="0.86"/><path d="M10,10.5 L8,13.5 L9.5,13.5 L7,17.5 L11.5,14 L9.8,14 Z" fill="#f0e050" opacity="0.88"/></svg>`,
+};
+(function injectForecast() {
+  document.querySelectorAll('.cloud-card[data-genus]').forEach(card => {
+    const d = fcData[card.dataset.genus];
+    if (!d) return;
+    // bar
+    const bar = document.createElement('div');
+    bar.className = 'card-forecast';
+    bar.innerHTML = `<span class="fc-icon">${fcIcons[d.type]}</span><span class="fc-label" style="color:${d.color}"><span class="es">${d.shortEs}</span><span class="en">${d.shortEn}</span></span>`;
+    card.querySelector('.card-body').appendChild(bar);
+    // hover block
+    const fc = document.createElement('div');
+    fc.className = 'hover-forecast';
+    fc.innerHTML = `<span class="es">${d.descEs}</span><span class="en">${d.descEn}</span>`;
+    const wmo = card.querySelector('.hover-wmo');
+    wmo.parentNode.insertBefore(fc, wmo);
+  });
+  // re-apply lang state so injected .es/.en obey current language
+  setLang(currentLang);
+})();
 // ── Borges random quote ─────────────────────────────────────
 const borgesVersos = [
   { text: "No habrá una sola cosa que no sea\nuna nube.", part: "I" },
