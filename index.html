@@ -98,6 +98,10 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
   text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:.8rem;}
 .id-res-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
   font-size:clamp(2.4rem,7vw,4rem);color:var(--cloud);line-height:1;margin-bottom:.5rem;}
+.id-res-latin{font-family:'Jost',sans-serif;font-weight:200;font-size:.6rem;letter-spacing:.12em;
+  color:var(--mist);opacity:.48;margin-bottom:.4rem;}
+.id-res-latin em{font-style:italic;font-family:'Cormorant Garamond',serif;font-size:.75rem;letter-spacing:.05em;}
+.id-res-latin-lbl{text-transform:uppercase;letter-spacing:.28em;font-size:.52rem;opacity:.7;}
 .id-res-code{font-family:'Jost',sans-serif;font-weight:200;font-size:.62rem;letter-spacing:.35em;
   text-transform:uppercase;color:var(--mist);opacity:.6;margin-bottom:1.6rem;}
 .id-res-desc{font-family:'Jost',sans-serif;font-weight:200;font-size:.8rem;color:var(--mist);
@@ -1605,34 +1609,34 @@ const idTree = {
   },
 };
 const idResults = {
-  r_ci:{ g:'ci', nameEs:'Cirrus', nameEn:'Cirrus', code:'Ci · Nivel Alto',
+  r_ci:{ g:'ci', nameEs:'Cirro', nameEn:'Cirrus', latin:'Cirrus', code:'Ci · Nivel Alto',
     descEs:'Nubes de hielo muy altas con forma de filamentos o mechones. Señal de frente cálido en las próximas 24–48 horas.',
     descEn:'Very high ice clouds shaped like filaments or tufts. Signal of a warm front in the next 24–48 hours.' },
-  r_cc:{ g:'cc', nameEs:'Cirrocúmulo', nameEn:'Cirrocumulus', code:'Cc · Nivel Alto',
+  r_cc:{ g:'cc', nameEs:'Cirrocúmulo', nameEn:'Cirrocumulus', latin:'Cirrocumulus', code:'Cc · Nivel Alto',
     descEs:'Pequeñas escamas de hielo en filas o patrones. Forman el llamado «cielo ajedrezado».',
     descEn:'Small ice scales in rows or patterns. They form the so-called "mackerel sky".' },
-  r_cs:{ g:'cs', nameEs:'Cirroestrato', nameEn:'Cirrostratus', code:'Cs · Nivel Alto',
+  r_cs:{ g:'cs', nameEs:'Cirroestrato', nameEn:'Cirrostratus', latin:'Cirrostratus', code:'Cs · Nivel Alto',
     descEs:'Velo de hielo que cubre el cielo y produce halos alrededor del sol o la luna.',
     descEn:'Ice veil covering the sky that produces halos around the sun or moon.' },
-  r_ac:{ g:'ac', nameEs:'Altocumulus', nameEn:'Altocumulus', code:'Ac · Nivel Medio',
+  r_ac:{ g:'ac', nameEs:'Altocúmulo', nameEn:'Altocumulus', latin:'Altocumulus', code:'Ac · Nivel Medio',
     descEs:'Manchas o rollos grises y blancos a altura media. Pueden anunciar tormentas si aparecen al amanecer.',
     descEn:'Gray and white patches or rolls at middle altitude. Can announce storms if seen at dawn.' },
-  r_as:{ g:'as', nameEs:'Altostratus', nameEn:'Altostratus', code:'As · Nivel Medio',
+  r_as:{ g:'as', nameEs:'Altoestrato', nameEn:'Altostratus', latin:'Altostratus', code:'As · Nivel Medio',
     descEs:'Capa uniforme gris-azulada. El sol se ve como a través de vidrio esmerilado.',
     descEn:'Uniform gray-blue layer. The sun looks as through frosted glass.' },
-  r_ns:{ g:'ns', nameEs:'Nimbostratus', nameEn:'Nimbostratus', code:'Ns · Varios Niveles',
+  r_ns:{ g:'ns', nameEs:'Nimboestrato', nameEn:'Nimbostratus', latin:'Nimbostratus', code:'Ns · Varios Niveles',
     descEs:'Capa densa y oscura con lluvia o nieve continua. Puede cubrir el cielo durante horas o días.',
     descEn:'Dense dark layer with continuous rain or snow. Can cover the sky for hours or days.' },
-  r_sc:{ g:'sc', nameEs:'Stratocumulus', nameEn:'Stratocumulus', code:'Sc · Nivel Bajo',
+  r_sc:{ g:'sc', nameEs:'Estratocúmulo', nameEn:'Stratocumulus', latin:'Stratocumulus', code:'Sc · Nivel Bajo',
     descEs:'Rollos o parches grises agrupados — la nube más frecuente en el mundo.',
     descEn:'Grouped gray rolls or patches — the world\'s most common cloud.' },
-  r_st:{ g:'st', nameEs:'Stratus', nameEn:'Stratus', code:'St · Nivel Bajo',
+  r_st:{ g:'st', nameEs:'Estrato', nameEn:'Stratus', latin:'Stratus', code:'St · Nivel Bajo',
     descEs:'Capa gris y uniforme muy baja, como niebla elevada. Puede producir llovizna fina.',
     descEn:'Low, uniform gray layer, like elevated fog. May produce fine drizzle.' },
-  r_cu:{ g:'cu', nameEs:'Cumulus', nameEn:'Cumulus', code:'Cu · Nivel Bajo',
+  r_cu:{ g:'cu', nameEs:'Cúmulo', nameEn:'Cumulus', latin:'Cumulus', code:'Cu · Nivel Bajo',
     descEs:'Nube esponjosa con base plana. Señal de buen tiempo si se mantiene pequeña.',
     descEn:'Fluffy cloud with a flat base. Fair weather signal if it stays small.' },
-  r_cb:{ g:'cb', nameEs:'Cumulonimbus', nameEn:'Cumulonimbus', code:'Cb · Vertical',
+  r_cb:{ g:'cb', nameEs:'Cumulonimbus', nameEn:'Cumulonimbus', latin:'Cumulonimbus', code:'Cb · Vertical',
     descEs:'La nube más intensa: tormenta, granizo y rayos. Su cima puede alcanzar 18 km de altura.',
     descEn:'The most intense cloud: storm, hail and lightning. Its top can reach 18 km high.' },
 };
@@ -1673,12 +1677,13 @@ function renderStep(stepId, animate) {
   if (res) {
     const l = lang();
     const name = l==='es' ? res.nameEs : res.nameEn;
-    const desc = l==='es' ? res.descEs : res.descEn;
+    const latinLbl = l==='es' ? 'Nombre en latín' : 'Latin name';
     const cta  = l==='es' ? 'Ver en el atlas' : 'See in atlas';
     const again = l==='es' ? 'Identificar otra' : 'Identify another';
     swap(`
       <div class="id-res-label"><span class="es">Encontramos tu nube</span><span class="en">We found your cloud</span></div>
       <div class="id-res-name">${name}</div>
+      <div class="id-res-latin"><span class="id-res-latin-lbl">${latinLbl}</span> · <em>${res.latin}</em></div>
       <div class="id-res-code">${res.code}</div>
       <div class="id-res-desc"><span class="es">${res.descEs}</span><span class="en">${res.descEn}</span></div>
       <div class="id-res-actions">
