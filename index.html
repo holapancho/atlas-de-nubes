@@ -57,7 +57,63 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 @keyframes dropLine{0%,100%{transform:scaleY(1) translateY(0);opacity:.6;}50%{transform:scaleY(1.15) translateY(4px);opacity:1;}}
 .scroll-line{width:1px;height:38px;background:linear-gradient(to bottom,var(--mist),transparent);transform-origin:top;animation:dropLine 2.2s ease-in-out infinite;}
 
-/* ── Section layout ── */
+/* ── Identifier trigger (hero button) ── */
+.id-trigger{margin-top:2.4rem;background:none;border:1px solid rgba(139,164,192,.3);
+  border-radius:3px;cursor:pointer;color:var(--mist);padding:.65rem 1.6rem;
+  font-family:'Jost',sans-serif;font-weight:200;font-size:.7rem;letter-spacing:.25em;
+  text-transform:uppercase;transition:border-color .25s,color .25s,background .25s;
+  display:inline-flex;align-items:center;gap:.7rem;}
+.id-trigger:hover{border-color:rgba(200,169,110,.5);color:var(--gold);background:rgba(200,169,110,.05);}
+.id-trigger svg{width:12px;height:12px;flex-shrink:0;transition:transform .25s;}
+.id-trigger:hover svg{transform:translateX(3px);}
+/* ── Identifier modal ── */
+#id-modal{position:fixed;inset:0;z-index:200;background:rgba(5,8,18,.96);
+  backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s ease;}
+#id-modal.open{opacity:1;pointer-events:all;}
+.id-inner{max-width:620px;width:92%;text-align:center;position:relative;padding:4rem 2rem 3rem;}
+.id-close-btn{position:absolute;top:0;right:0;background:none;border:none;cursor:pointer;
+  color:var(--mist);opacity:.45;font-size:1.1rem;padding:.5rem;transition:opacity .2s,color .2s;}
+.id-close-btn:hover{opacity:1;color:var(--cloud);}
+.id-label{font-family:'Jost',sans-serif;font-weight:200;font-size:.58rem;letter-spacing:.45em;
+  text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:1.8rem;}
+#id-step{transition:opacity .22s ease,transform .22s ease;}
+#id-step.fade-out{opacity:0;transform:translateY(8px);}
+.id-q{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(1.5rem,4vw,2.2rem);color:var(--cloud);line-height:1.35;margin-bottom:2.2rem;
+  white-space:pre-line;}
+.id-opts{display:flex;flex-direction:column;gap:.7rem;align-items:stretch;}
+.id-opt{background:rgba(139,164,192,.05);border:1px solid rgba(139,164,192,.15);border-radius:4px;
+  cursor:pointer;color:var(--mist);padding:.75rem 1.2rem;font-family:'Jost',sans-serif;
+  font-weight:200;font-size:.78rem;letter-spacing:.04em;line-height:1.5;
+  transition:border-color .2s,color .2s,background .2s;text-align:left;}
+.id-opt:hover{border-color:rgba(200,169,110,.45);color:var(--cloud);background:rgba(200,169,110,.06);}
+.id-nav{margin-top:1.6rem;display:flex;justify-content:center;}
+.id-back{background:none;border:none;cursor:pointer;color:var(--mist);opacity:.4;
+  font-family:'Jost',sans-serif;font-weight:200;font-size:.62rem;letter-spacing:.2em;
+  text-transform:uppercase;padding:.3rem;transition:opacity .2s;}
+.id-back:hover{opacity:.85;}
+/* result */
+.id-res-label{font-family:'Jost',sans-serif;font-weight:200;font-size:.58rem;letter-spacing:.45em;
+  text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:.8rem;}
+.id-res-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(2.4rem,7vw,4rem);color:var(--cloud);line-height:1;margin-bottom:.5rem;}
+.id-res-code{font-family:'Jost',sans-serif;font-weight:200;font-size:.62rem;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--mist);opacity:.6;margin-bottom:1.6rem;}
+.id-res-desc{font-family:'Jost',sans-serif;font-weight:200;font-size:.8rem;color:var(--mist);
+  line-height:1.8;max-width:480px;margin:0 auto 2rem;opacity:.85;}
+.id-res-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.id-res-cta{background:none;border:1px solid rgba(200,169,110,.4);border-radius:3px;
+  cursor:pointer;color:var(--gold);padding:.6rem 1.4rem;font-family:'Jost',sans-serif;
+  font-weight:200;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  transition:background .2s,border-color .2s;}
+.id-res-cta:hover{background:rgba(200,169,110,.1);border-color:rgba(200,169,110,.7);}
+.id-res-again{background:none;border:1px solid rgba(139,164,192,.2);border-radius:3px;
+  cursor:pointer;color:var(--mist);padding:.6rem 1.4rem;font-family:'Jost',sans-serif;
+  font-weight:200;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+  transition:border-color .2s,color .2s;}
+.id-res-again:hover{border-color:rgba(139,164,192,.5);color:var(--cloud);}
+/* Section layout ── */
 .section-wrap{max-width:1160px;margin:0 auto;padding:5.5rem 2rem;}
 .section-wrap.tight{padding-top:3rem;}
 .section-label{font-family:'Jost',sans-serif;font-weight:200;font-size:.62rem;letter-spacing:.5em;
@@ -259,6 +315,11 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
       <span class="es">Escritura efímera en el cielo,<br>los diez géneros que dan nombre al silencio.</span>
       <span class="en">Ephemeral writing in the sky,<br>ten genera that give name to silence.</span>
     </p>
+    <button class="id-trigger" onclick="openIdentifier()">
+      <span class="es">¿Qué nube ves?</span>
+      <span class="en">What cloud do you see?</span>
+      <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M2,6 L10,6 M7,3 L10,6 L7,9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    </button>
   </div>
   <div class="scroll-hint">
     <span class="es">Explorar</span><span class="en">Explore</span>
@@ -1472,6 +1533,191 @@ const io = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal, .cloud-card, .var-card, .sym-card').forEach(el => io.observe(el));
 document.querySelectorAll('.cloud-card').forEach((c,i) => c.style.transitionDelay = `${i*.07}s`);
 document.querySelectorAll('.var-card').forEach((c,i) => c.style.transitionDelay = `${i*.06}s`);
+</script>
+
+<!-- ══════════════════════════════════════ IDENTIFIER MODAL -->
+<div id="id-modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="id-inner">
+    <button class="id-close-btn" onclick="closeIdentifier()" aria-label="Cerrar">✕</button>
+    <div class="id-label">
+      <span class="es">Identificador de Nubes</span>
+      <span class="en">Cloud Identifier</span>
+    </div>
+    <div id="id-step"></div>
+  </div>
+</div>
+
+<script>
+// ── Cloud Identifier ─────────────────────────────────────────
+const idTree = {
+  start: {
+    q:{ es:'¿Ves precipitación\ncayendo desde la nube?', en:'Is precipitation\nfalling from the cloud?' },
+    opts:[
+      { es:'Sí, llueve o graniza', en:'Yes, rain or hail', next:'precip' },
+      { es:'No', en:'No', next:'height' },
+    ]
+  },
+  precip: {
+    q:{ es:'¿Cómo es la precipitación?', en:'What is the precipitation like?' },
+    opts:[
+      { es:'Lluvia continua, cielo completamente cubierto', en:'Continuous rain, sky fully overcast', next:'r_ns' },
+      { es:'Tormenta intensa, rayos o granizo', en:'Heavy storm, lightning or hail', next:'r_cb' },
+      { es:'Llovizna fina, cielo gris y muy bajo', en:'Fine drizzle, low gray sky', next:'r_st' },
+    ]
+  },
+  height: {
+    q:{ es:'¿A qué altura está la nube?', en:'How high up is the cloud?' },
+    opts:[
+      { es:'Muy alta — tenue, casi transparente', en:'Very high — faint, almost transparent', next:'high' },
+      { es:'Altura media', en:'Middle altitude', next:'mid' },
+      { es:'Baja, cerca del suelo o las montañas', en:'Low, near the ground or hills', next:'low' },
+      { es:'Se extiende desde abajo hasta muy arriba', en:'Extends from low all the way up', next:'r_cb' },
+    ]
+  },
+  high: {
+    q:{ es:'¿Qué forma tiene?', en:'What shape does it have?' },
+    opts:[
+      { es:'Filamentos finos, como pelos o plumas', en:'Thin filaments, like hair or feathers', next:'r_ci' },
+      { es:'Pequeñas escamas o bolitas agrupadas en filas', en:'Small scales or puffs grouped in rows', next:'r_cc' },
+      { es:'Velo fino sobre el cielo — halo alrededor del sol', en:'Thin veil across the sky — halo around the sun', next:'r_cs' },
+    ]
+  },
+  mid: {
+    q:{ es:'¿Cómo se ve?', en:'What does it look like?' },
+    opts:[
+      { es:'Manchas o rollos redondeados, a veces en filas', en:'Rounded patches or rolls, sometimes in rows', next:'r_ac' },
+      { es:'Capa uniforme gris-azulada, sol apenas visible', en:'Uniform gray-blue layer, sun barely visible', next:'r_as' },
+    ]
+  },
+  low: {
+    q:{ es:'¿Cómo es la nube?', en:'What is the cloud like?' },
+    opts:[
+      { es:'Rollos o parches agrupados como olas', en:'Rolls or patches grouped like waves', next:'r_sc' },
+      { es:'Capa gris uniforme y baja, sin forma definida', en:'Low uniform gray layer, shapeless', next:'r_st' },
+      { es:'Esponjosa, base plana, se ve individual', en:'Fluffy, flat base, stands alone', next:'r_cu' },
+    ]
+  },
+};
+const idResults = {
+  r_ci:{ g:'ci', nameEs:'Cirrus', nameEn:'Cirrus', code:'Ci · Nivel Alto',
+    descEs:'Nubes de hielo muy altas con forma de filamentos o mechones. Señal de frente cálido en las próximas 24–48 horas.',
+    descEn:'Very high ice clouds shaped like filaments or tufts. Signal of a warm front in the next 24–48 hours.' },
+  r_cc:{ g:'cc', nameEs:'Cirrocúmulo', nameEn:'Cirrocumulus', code:'Cc · Nivel Alto',
+    descEs:'Pequeñas escamas de hielo en filas o patrones. Forman el llamado «cielo ajedrezado».',
+    descEn:'Small ice scales in rows or patterns. They form the so-called "mackerel sky".' },
+  r_cs:{ g:'cs', nameEs:'Cirroestrato', nameEn:'Cirrostratus', code:'Cs · Nivel Alto',
+    descEs:'Velo de hielo que cubre el cielo y produce halos alrededor del sol o la luna.',
+    descEn:'Ice veil covering the sky that produces halos around the sun or moon.' },
+  r_ac:{ g:'ac', nameEs:'Altocúmulo', nameEn:'Altocumulus', code:'Ac · Nivel Medio',
+    descEs:'Manchas o rollos grises y blancos a altura media. Pueden anunciar tormentas si aparecen al amanecer.',
+    descEn:'Gray and white patches or rolls at middle altitude. Can announce storms if seen at dawn.' },
+  r_as:{ g:'as', nameEs:'Altoestrato', nameEn:'Altostratus', code:'As · Nivel Medio',
+    descEs:'Capa uniforme gris-azulada. El sol se ve como a través de vidrio esmerilado.',
+    descEn:'Uniform gray-blue layer. The sun looks as through frosted glass.' },
+  r_ns:{ g:'ns', nameEs:'Nimboestrato', nameEn:'Nimbostratus', code:'Ns · Varios Niveles',
+    descEs:'Capa densa y oscura con lluvia o nieve continua. Puede cubrir el cielo durante horas o días.',
+    descEn:'Dense dark layer with continuous rain or snow. Can cover the sky for hours or days.' },
+  r_sc:{ g:'sc', nameEs:'Estratocúmulo', nameEn:'Stratocumulus', code:'Sc · Nivel Bajo',
+    descEs:'Rollos o parches grises agrupados — la nube más frecuente en el mundo.',
+    descEn:'Grouped gray rolls or patches — the world\'s most common cloud.' },
+  r_st:{ g:'st', nameEs:'Estrato', nameEn:'Stratus', code:'St · Nivel Bajo',
+    descEs:'Capa gris y uniforme muy baja, como niebla elevada. Puede producir llovizna fina.',
+    descEn:'Low, uniform gray layer, like elevated fog. May produce fine drizzle.' },
+  r_cu:{ g:'cu', nameEs:'Cúmulo', nameEn:'Cumulus', code:'Cu · Nivel Bajo',
+    descEs:'Nube esponjosa con base plana. Señal de buen tiempo si se mantiene pequeña.',
+    descEn:'Fluffy cloud with a flat base. Fair weather signal if it stays small.' },
+  r_cb:{ g:'cb', nameEs:'Cumulonimbus', nameEn:'Cumulonimbus', code:'Cb · Vertical',
+    descEs:'La nube más intensa: tormenta, granizo y rayos. Su cima puede alcanzar 18 km de altura.',
+    descEn:'The most intense cloud: storm, hail and lightning. Its top can reach 18 km high.' },
+};
+
+let idHistory = [];
+const idModal  = document.getElementById('id-modal');
+const idStep   = document.getElementById('id-step');
+const lang = () => document.documentElement.getAttribute('data-lang') || 'es';
+
+function openIdentifier() {
+  idHistory = [];
+  idModal.classList.add('open');
+  idModal.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  renderStep('start', false);
+}
+function closeIdentifier() {
+  idModal.classList.remove('open');
+  idModal.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+idModal.addEventListener('click', function(e){ if(e.target === idModal) closeIdentifier(); });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeIdentifier(); });
+
+function renderStep(stepId, animate) {
+  const step = idTree[stepId];
+  const res  = idResults[stepId];
+
+  function swap(html) {
+    if (!animate) { idStep.innerHTML = html; return; }
+    idStep.classList.add('fade-out');
+    setTimeout(() => {
+      idStep.innerHTML = html;
+      idStep.classList.remove('fade-out');
+    }, 220);
+  }
+
+  if (res) {
+    const l = lang();
+    const name = l==='es' ? res.nameEs : res.nameEn;
+    const desc = l==='es' ? res.descEs : res.descEn;
+    const cta  = l==='es' ? 'Ver en el atlas' : 'See in atlas';
+    const again = l==='es' ? 'Identificar otra' : 'Identify another';
+    swap(`
+      <div class="id-res-label"><span class="es">Encontramos tu nube</span><span class="en">We found your cloud</span></div>
+      <div class="id-res-name">${name}</div>
+      <div class="id-res-code">${res.code}</div>
+      <div class="id-res-desc"><span class="es">${res.descEs}</span><span class="en">${res.descEn}</span></div>
+      <div class="id-res-actions">
+        <button class="id-res-cta" onclick="goToCard('${res.g}')">${cta}</button>
+        <button class="id-res-again" onclick="restartIdentifier()">${again}</button>
+      </div>
+    `);
+    return;
+  }
+
+  const l = lang();
+  const q = l==='es' ? step.q.es : step.q.en;
+  const optsHtml = step.opts.map((o,i) =>
+    `<button class="id-opt" onclick="idChoose(${i},this.closest('#id-step').dataset.sid)">${l==='es'?o.es:o.en}</button>`
+  ).join('');
+  const backHtml = idHistory.length
+    ? `<button class="id-back" onclick="idBack()">← <span class="es">Volver</span><span class="en">Back</span></button>`
+    : '';
+  const html = `<div data-sid="${stepId}">
+    <div class="id-q">${q}</div>
+    <div class="id-opts">${optsHtml}</div>
+    <div class="id-nav">${backHtml}</div>
+  </div>`;
+  swap(html);
+}
+
+function idChoose(i, sid) {
+  const step = idTree[sid];
+  if (!step) return;
+  idHistory.push(sid);
+  renderStep(step.opts[i].next, true);
+}
+function idBack() {
+  const prev = idHistory.pop();
+  if (prev) renderStep(prev, true);
+}
+function restartIdentifier() {
+  idHistory = [];
+  renderStep('start', true);
+}
+function goToCard(genus) {
+  closeIdentifier();
+  const card = document.querySelector(`.cloud-card[data-genus="${genus}"]`);
+  if (card) { setTimeout(() => card.scrollIntoView({behavior:'smooth',block:'center'}), 300); }
+}
 </script>
 </body>
 </html>
