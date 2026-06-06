@@ -150,8 +150,14 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 
 /* ── Altitude Diagram ── */
 .altitude-bg{background:linear-gradient(180deg,var(--navy) 0%,#0b1322 50%,var(--navy) 100%);}
-.diagram-outer{display:flex;gap:0;height:520px;position:relative;}
+.diagram-outer{display:flex;gap:0;height:520px;position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .axis{width:56px;flex-shrink:0;position:relative;}
+.chart{min-width:480px;}
+@media(max-width:640px){
+  .diagram-outer{height:420px;}
+  .axis{width:38px;}
+  .axis-tick{font-size:.52rem;right:6px;}
+}
 .axis-tick{position:absolute;right:10px;transform:translateY(-50%);font-family:'Jost',sans-serif;
   font-size:.6rem;font-weight:200;color:var(--mist);opacity:.45;}
 .t-16{top:0%}.t-12{top:25%}.t-8{top:50%}.t-4{top:75%}.t-0{top:100%}
@@ -1686,12 +1692,12 @@ function renderStep(stepId, animate) {
   const l = lang();
   const q = l==='es' ? step.q.es : step.q.en;
   const optsHtml = step.opts.map((o,i) =>
-    `<button class="id-opt" onclick="idChoose(${i},this.closest('#id-step').dataset.sid)">${l==='es'?o.es:o.en}</button>`
+    `<button class="id-opt" onclick="idChoose(${i},'${stepId}')">${l==='es'?o.es:o.en}</button>`
   ).join('');
   const backHtml = idHistory.length
     ? `<button class="id-back" onclick="idBack()">← <span class="es">Volver</span><span class="en">Back</span></button>`
     : '';
-  const html = `<div data-sid="${stepId}">
+  const html = `<div>
     <div class="id-q">${q}</div>
     <div class="id-opts">${optsHtml}</div>
     <div class="id-nav">${backHtml}</div>
