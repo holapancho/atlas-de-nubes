@@ -1906,7 +1906,7 @@ function renderStep(stepId, animate) {
       <div class="id-res-desc"><span class="es">${res.descEs}</span><span class="en">${res.descEn}</span></div>
       <div class="id-res-actions">
         <button class="id-res-cta" onclick="goToCard('${res.g}')">${cta}</button>
-        <button class="id-res-share" onclick="shareResult('${name}','${res.latin}')">${shareSVG}${share}</button>
+        <button class="id-res-share" onclick="shareResult('${name}','${res.latin}','${res.g}')">${shareSVG}${share}</button>
         <button class="id-res-again" onclick="restartIdentifier()">${again}</button>
       </div>
     `);
@@ -1949,12 +1949,12 @@ function goToCard(genus) {
   if (card) { setTimeout(() => card.scrollIntoView({behavior:'smooth',block:'center'}), 300); }
 }
 // ── Share identifier result ──────────────────────────────────
-function shareResult(name, latin) {
+function shareResult(name, latin, genus) {
   const l = lang();
   const text = l === 'es'
     ? `Identifiqué un ${name} (${latin}) con el Atlas de Nubes`
     : `I identified a ${name} (${latin}) with the Cloud Atlas`;
-  const url = location.href.split('#')[0];
+  const url = location.href.split('#')[0] + (genus ? '#' + genus : '');
   if (navigator.share) {
     navigator.share({ title: 'Atlas de Nubes', text, url }).catch(() => {});
   } else {
@@ -1964,6 +1964,13 @@ function shareResult(name, latin) {
     }).catch(() => {});
   }
 }
+// ── Deep link via hash ───────────────────────────────────────
+(function checkHash() {
+  const genus = location.hash.slice(1);
+  if (!genus) return;
+  const card = document.querySelector(`.cloud-card[data-genus="${genus}"]`);
+  if (card) setTimeout(() => card.scrollIntoView({behavior:'smooth', block:'center'}), 600);
+})();
 // ── Nav active state ─────────────────────────────────────────
 (function initNav() {
   const pills = document.querySelectorAll('.nav-pill');
