@@ -247,6 +247,20 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 .hover-desc{font-family:'Jost',sans-serif;font-weight:200;font-size:.75rem;color:var(--cloud);line-height:1.7;opacity:.85;margin-top:.5rem;}
 .hover-wmo{margin-top:1.2rem;font-family:'Jost',sans-serif;font-size:.56rem;font-weight:200;letter-spacing:.3em;text-transform:uppercase;color:var(--mist);opacity:.5;}
 
+/* ── Curiosidades ── */
+.curiosity-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem;}
+.curi-card{background:rgba(10,18,32,.55);border:1px solid rgba(139,164,192,.1);
+  border-radius:6px;padding:1.4rem 1.6rem;border-left:2px solid transparent;transition:border-color .25s;}
+.curi-card.alto{border-left-color:rgba(200,169,110,.45);}
+.curi-card.medio{border-left-color:rgba(139,164,192,.4);}
+.curi-card.bajo{border-left-color:rgba(221,232,240,.2);}
+.curi-card.vertical{border-left-color:rgba(180,100,80,.4);}
+.curi-header{display:flex;align-items:baseline;gap:.6rem;margin-bottom:.75rem;}
+.curi-code{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--gold);opacity:.7;}
+.curi-name{font-family:'Jost',sans-serif;font-weight:200;font-size:.6rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--mist);opacity:.55;}
+.curi-fact{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.98rem;
+  color:var(--cloud);line-height:1.75;opacity:.82;}
 /* ── Attribution ── */
 .attribution-bg{background:linear-gradient(180deg,var(--navy) 0%,#070c16 100%);}
 .attr-card{border:1px solid rgba(200,169,110,.2);border-radius:12px;
@@ -1258,6 +1272,129 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
     </div>
 
   </div><!-- /specials-grid -->
+</div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ══════════════════════════════════════ CURIOSIDADES -->
+<div class="altitude-bg">
+<div class="section-wrap">
+  <p class="section-label reveal"><span class="es">Datos sorprendentes</span><span class="en">Surprising facts</span></p>
+  <h2 class="section-title reveal"><span class="es">Curiosidades</span><span class="en">Did you know?</span></h2>
+  <div class="curiosity-grid">
+
+    <div class="curi-card alto reveal">
+      <div class="curi-header">
+        <span class="curi-code">Ci</span>
+        <span class="curi-name"><span class="es">Cirro</span><span class="en">Cirrus</span></span>
+      </div>
+      <p class="curi-fact">
+        <span class="es">Los cristales de hielo del cirrus caen, pero se evaporan antes de llegar al suelo. Ese rastro de hielo que nunca toca tierra es lo que forma sus características "colas de caballo".</span>
+        <span class="en">Cirrus ice crystals fall but evaporate before reaching the ground. That trail of ice that never lands is what forms its characteristic "mare's tails".</span>
+      </p>
+    </div>
+
+    <div class="curi-card alto reveal">
+      <div class="curi-header">
+        <span class="curi-code">Cc</span>
+        <span class="curi-name"><span class="es">Cirrocúmulo</span><span class="en">Cirrocumulus</span></span>
+      </div>
+      <p class="curi-fact">
+        <span class="es">Cada elemento individual del cirrocúmulo mide menos de 1° de arco visto desde el suelo — el tamaño de tu dedo meñique a brazo extendido. Es la nube de menor tamaño en la clasificación.</span>
+        <span class="en">Each individual puff of cirrocumulus subtends less than 1° of arc seen from the ground — the size of your little finger at arm's length. It is the smallest cloud in the classification.</span>
+      </p>
+    </div>
+
+    <div class="curi-card alto reveal">
+      <div class="curi-header">
+        <span class="curi-code">Cs</span>
+        <span class="curi-name"><span class="es">Cirroestrato</span><span class="en">Cirrostratus</span></span>
+      </div>
+      <p class="curi-fact">
+        <span class="es">Es la única nube que produce halos solares y lunares de manera regular. El halo aparece exactamente a 22° alrededor del sol — los cristales de hielo actúan como millones de prismas diminutos.</span>
+        <span class="en">It is the only cloud that regularly produces solar and lunar halos. The halo appears at exactly 22° around the sun — the ice crystals act as millions of tiny prisms.</span>
+      </p>
+    </div>
+
+    <div class="curi-card medio reveal">
+      <div class="curi-header">
+        <span class="curi-code">Ac</span>
+        <span class="curi-name"><span class="es">Altocúmulo</span><span class="en">Altocumulus</span></span>
+      </div>
+      <p class="curi-fact">
+        <span class="es">Cuando aparecen en forma de pequeñas torres al amanecer (altocúmulo castellanus), predicen tormentas con hasta 8 horas de anticipación. Los meteorólogos los llaman "el despertador de las tormentas".</span>
+        <span class="en">When they appear as small towers at dawn (altocumulus castellanus), they predict storms up to 8 hours in advance. Meteorologists call them "the storm alarm clock".</span>
+      </p>
+    </div>
+
+    <div class="curi-card medio reveal">
+      <div class="curi-header">
+        <span class="curi-code">As</span>
+        <span class="curi-name"><span class="es">Altoestrato</span><span class="en">Altostratus</span></span>
+      </div>
+      <p class="curi-fact">
+        <span class="es">A diferencia del cirroestrato, el sol visto a través del altoestrato nunca produce halo. Aparece como detrás de un vidrio esmerilado — esa diferencia es la clave para distinguirlos.</span>
+        <span class="en">Unlike cirrostratus, the sun seen through altostratus never produces a halo. It looks as though behind frosted glass — that difference is the key to telling them apart.</span>
+      </p>
+    </div>
+
+    <div class="curi-card medio reveal">
+      <div class="curi-header">
+        <span class="curi-code">Ns</span>
+        <span class="curi-name"><span class="es">Nimboestrato</span><span class="en">Nimbostratus</span></span>
+      </div>
+      <p class="curi-fact">
+        <span class="es">Puede extenderse horizontalmente por cientos o miles de kilómetros y durar días seguidos. Es la única nube clasificada en varios niveles al mismo tiempo: su base está abajo, pero su cima alcanza el nivel medio.</span>
+        <span class="en">It can extend horizontally for hundreds or thousands of kilometers and last for days. It is the only cloud classified across multiple levels at once: its base is low, but its top reaches the middle level.</span>
+      </p>
+    </div>
+
+    <div class="curi-card bajo reveal">
+      <div class="curi-header">
+        <span class="curi-code">Sc</span>
+        <span class="curi-name"><span class="es">Estratocúmulo</span><span class="en">Stratocumulus</span></span>
+      </div>
+      <p class="curi-fact">
+        <span class="es">Es la nube más frecuente del planeta. En cualquier momento del día cubre cerca del 23 % de los océanos y el 12 % de los continentes. Si miras el cielo al azar, probablemente estás viendo estratocúmulo.</span>
+        <span class="en">It is the world's most common cloud. At any given moment it covers about 23% of the oceans and 12% of the continents. If you look at the sky at random, you are probably looking at stratocumulus.</span>
+      </p>
+    </div>
+
+    <div class="curi-card bajo reveal">
+      <div class="curi-header">
+        <span class="curi-code">St</span>
+        <span class="curi-name"><span class="es">Estrato</span><span class="en">Stratus</span></span>
+      </div>
+      <p class="curi-fact">
+        <span class="es">A nivel del suelo, el estrato es simplemente niebla. La única diferencia entre niebla y estrato es la altura: si toca el suelo, se llama niebla; si está elevada unos metros, se llama estrato.</span>
+        <span class="en">At ground level, stratus is simply fog. The only difference between fog and stratus is height: if it touches the ground, it is called fog; if it is elevated a few meters, it is called stratus.</span>
+      </p>
+    </div>
+
+    <div class="curi-card bajo reveal">
+      <div class="curi-header">
+        <span class="curi-code">Cu</span>
+        <span class="curi-name"><span class="es">Cúmulo</span><span class="en">Cumulus</span></span>
+      </div>
+      <p class="curi-fact">
+        <span class="es">Es la nube más "joven" del día: se forma entre las 10 y 11 de la mañana cuando el sol calienta el suelo, y desaparece al atardecer cuando la tierra se enfría. Nace y muere cada día.</span>
+        <span class="en">It is the day's "youngest" cloud: it forms around 10–11 a.m. when the sun heats the ground, and disappears at sunset when the earth cools. It is born and dies every single day.</span>
+      </p>
+    </div>
+
+    <div class="curi-card vertical reveal">
+      <div class="curi-header">
+        <span class="curi-code">Cb</span>
+        <span class="curi-name">Cumulonimbus</span>
+      </div>
+      <p class="curi-fact">
+        <span class="es">Puede alcanzar 18 km de altura — el doble del crucero de un avión comercial. Genera granizo del tamaño de una pelota de golf, vientos de más de 200 km/h y descargas de hasta mil millones de voltios.</span>
+        <span class="en">It can reach 18 km high — twice the cruising altitude of a commercial plane. It generates golf ball-sized hail, winds over 200 km/h, and lightning bolts of up to one billion volts.</span>
+      </p>
+    </div>
+
+  </div>
 </div>
 </div>
 
