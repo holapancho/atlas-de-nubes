@@ -68,6 +68,24 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
   text-transform:uppercase;color:var(--mist);opacity:.55;text-decoration:none;
   border-bottom:1px solid transparent;transition:color .2s,opacity .2s,border-color .2s;white-space:nowrap;}
 .nav-pill:hover,.nav-pill.active{color:var(--gold);opacity:1;border-bottom-color:rgba(200,169,110,.6);}
+/* ── Filter bar ── */
+.filter-bar{display:flex;gap:.45rem;margin-bottom:2.2rem;flex-wrap:wrap;}
+.filter-btn{background:none;border:1px solid rgba(139,164,192,.2);border-radius:3px;
+  cursor:pointer;color:var(--mist);opacity:.6;padding:.42rem .9rem;
+  font-family:'Jost',sans-serif;font-weight:200;font-size:.6rem;letter-spacing:.18em;
+  text-transform:uppercase;transition:all .2s;}
+.filter-btn:hover{opacity:1;border-color:rgba(139,164,192,.4);color:var(--cloud);}
+.filter-btn.active{opacity:1;border-color:rgba(200,169,110,.5);color:var(--gold);background:rgba(200,169,110,.06);}
+/* ── Back to top ── */
+#back-top{position:fixed;bottom:1.6rem;right:1.6rem;z-index:150;
+  background:rgba(10,18,32,.88);border:1px solid rgba(139,164,192,.2);
+  border-radius:50%;width:38px;height:38px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--mist);opacity:0;pointer-events:none;
+  transition:opacity .3s,border-color .25s,color .25s;backdrop-filter:blur(8px);}
+#back-top.visible{opacity:1;pointer-events:all;}
+#back-top:hover{border-color:rgba(200,169,110,.45);color:var(--gold);}
+#back-top svg{width:14px;height:14px;}
 /* ── Identifier trigger (hero button) ── */
 .id-trigger{margin-top:2.4rem;background:rgba(200,169,110,.08);border:1px solid rgba(200,169,110,.35);
   border-radius:4px;cursor:pointer;color:var(--gold);padding:.75rem 1.8rem;
@@ -582,6 +600,13 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
 <div class="section-wrap">
   <p class="section-label reveal"><span class="es">Diez géneros · OMM</span><span class="en">Ten genera · WMO</span></p>
   <h2 class="section-title reveal"><span class="es">Los géneros del cielo</span><span class="en">The genera of the sky</span></h2>
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all" onclick="filterClouds('all')"><span class="es">Todos</span><span class="en">All</span></button>
+    <button class="filter-btn" data-filter="alto" onclick="filterClouds('alto')"><span class="es">Alto</span><span class="en">High</span></button>
+    <button class="filter-btn" data-filter="medio" onclick="filterClouds('medio')"><span class="es">Medio</span><span class="en">Middle</span></button>
+    <button class="filter-btn" data-filter="bajo" onclick="filterClouds('bajo')"><span class="es">Bajo</span><span class="en">Low</span></button>
+    <button class="filter-btn" data-filter="vertical" onclick="filterClouds('vertical')">Vertical</button>
+  </div>
   <div class="cards-grid">
 
     <!-- ① CIRRUS -->
@@ -1761,6 +1786,13 @@ document.querySelectorAll('.cloud-card').forEach((c,i) => c.style.transitionDela
 document.querySelectorAll('.var-card').forEach((c,i) => c.style.transitionDelay = `${i*.06}s`);
 </script>
 
+<!-- ══════════════════════════════════════ BACK TO TOP -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">
+  <svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="2,9 7,4 12,9"/>
+  </svg>
+</button>
+
 <!-- ══════════════════════════════════════ IDENTIFIER MODAL -->
 <div id="id-modal" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="id-inner">
@@ -1964,6 +1996,22 @@ function shareResult(name, latin, genus) {
     }).catch(() => {});
   }
 }
+// ── Filter by level ─────────────────────────────────────────
+const levelMap = { alto:['ci','cc','cs'], medio:['ac','as','ns'], bajo:['sc','st','cu'], vertical:['cb'] };
+function filterClouds(level) {
+  document.querySelectorAll('.cloud-card[data-genus]').forEach(card => {
+    const show = level === 'all' || (levelMap[level] || []).includes(card.dataset.genus);
+    card.style.display = show ? '' : 'none';
+  });
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === level);
+  });
+}
+// ── Back to top ──────────────────────────────────────────────
+(function initBackTop() {
+  const btn = document.getElementById('back-top');
+  window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 400), {passive:true});
+})();
 // ── Deep link via hash ───────────────────────────────────────
 (function checkHash() {
   const genus = location.hash.slice(1);
