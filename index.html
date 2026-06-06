@@ -1989,12 +1989,19 @@ function shareResult(name, latin) {
   .symbols-bg,.attribution-bg,.altitude-bg,.section-divider,
   .card-hover,.card-forecast,.speak-btn,.tap-hint,footer{display:none!important;}
   .cloud-card{background:#f5f5f5!important;border:1px solid #ccc!important;break-inside:avoid;page-break-inside:avoid;}
-  .card-name,.card-name-latin,.card-phonetic,.card-code{color:#111!important;}
   .clouds-grid{grid-template-columns:repeat(3,1fr)!important;}
-  .section-title,.section-label{color:#111!important;}
-  .hero-title,.hero-subtitle,.hero-tagline{color:#111!important;}
+  .section-title,.section-label{color:#111!important;font-weight:400!important;}
+  .hero-title{color:#111!important;font-weight:400!important;font-style:italic;}
+  .hero-subtitle,.hero-tagline{color:#444!important;font-weight:400!important;}
+  /* force normal weight so fallback fonts don't render as bold */
+  .card-name{color:#111!important;font-weight:400!important;font-style:italic;}
+  .card-name-latin{color:#444!important;font-weight:400!important;}
+  .card-phonetic{color:#666!important;font-weight:400!important;}
+  .card-code{color:#555!important;font-weight:400!important;}
+  .card-svg svg{opacity:.7;}
   .curi-card{background:#f9f9f9!important;border:1px solid #ddd!important;break-inside:avoid;}
-  .curi-code,.curi-fact{color:#111!important;}
+  .curi-code{color:#333!important;font-weight:400!important;}
+  .curi-fact{color:#222!important;font-weight:400!important;font-style:italic;}
 </style>
 </body>
 </html>
