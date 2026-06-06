@@ -1977,6 +1977,7 @@ function restartIdentifier() {
 }
 function goToCard(genus) {
   closeIdentifier();
+  filterClouds('all');
   const card = document.querySelector(`.cloud-card[data-genus="${genus}"]`);
   if (card) { setTimeout(() => card.scrollIntoView({behavior:'smooth',block:'center'}), 300); }
 }
