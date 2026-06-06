@@ -161,10 +161,26 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 .axis{width:56px;flex-shrink:0;position:relative;}
 .chart{min-width:480px;}
 @media(max-width:640px){
-  .diagram-outer{height:420px;}
-  .axis{width:38px;}
-  .axis-tick{font-size:.52rem;right:6px;}
+  .diagram-outer{display:none;}
+  .alt-list{display:flex;}
 }
+/* ── Altitude list (mobile) ── */
+.alt-list{display:none;flex-direction:column;gap:.6rem;}
+.alt-row{border-radius:6px;padding:1rem 1.2rem;background:rgba(10,18,32,.5);border:1px solid rgba(139,164,192,.1);}
+.alt-row.alto{border-left:3px solid rgba(200,169,110,.5);}
+.alt-row.medio{border-left:3px solid rgba(139,164,192,.45);}
+.alt-row.bajo{border-left:3px solid rgba(221,232,240,.22);}
+.alt-row.vertical{border-left:3px solid rgba(180,100,80,.4);}
+.alt-row-header{display:flex;align-items:baseline;gap:.7rem;margin-bottom:.75rem;}
+.alt-row-level{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--cloud);}
+.alt-row.alto .alt-row-level{color:var(--gold);}
+.alt-row-range{font-family:'Jost',sans-serif;font-weight:200;font-size:.58rem;letter-spacing:.2em;color:var(--mist);opacity:.5;text-transform:uppercase;}
+.alt-row-clouds{display:flex;flex-wrap:wrap;gap:.5rem;}
+.alt-chip{display:flex;align-items:baseline;gap:.35rem;background:rgba(139,164,192,.07);
+  border:1px solid rgba(139,164,192,.14);border-radius:4px;padding:.3rem .65rem;}
+.alt-chip-ab{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--cloud);}
+.alt-row.alto .alt-chip-ab{color:#d8c080;}
+.alt-chip-nm{font-family:'Jost',sans-serif;font-weight:200;font-size:.6rem;letter-spacing:.06em;color:var(--mist);opacity:.7;}
 .axis-tick{position:absolute;right:10px;transform:translateY(-50%);font-family:'Jost',sans-serif;
   font-size:.6rem;font-weight:200;color:var(--mist);opacity:.45;}
 .t-16{top:0%}.t-12{top:25%}.t-8{top:50%}.t-4{top:75%}.t-0{top:100%}
@@ -239,12 +255,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
   font-family:'Jost',sans-serif;font-weight:200;font-size:.52rem;letter-spacing:.18em;
   text-transform:uppercase;color:var(--mist);opacity:.4;}
 @media(hover:none){.tap-hint{display:block;}}
-/* close button — visible whenever card is active (tap-opened) */
-.hover-close{display:none;position:absolute;top:.7rem;right:.85rem;
-  background:none;border:none;cursor:pointer;color:var(--mist);opacity:.5;
-  font-size:1rem;line-height:1;padding:.4rem;}
-.hover-close:hover{opacity:1;color:var(--cloud);}
-.cloud-card.active .hover-close,.var-card.active .hover-close{display:block;}
+.cloud-card.active .tap-hint,.var-card.active .tap-hint{display:none;}
 .hover-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.55rem;color:var(--gold);margin-bottom:1rem;line-height:1;}
 .hover-poem{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;color:var(--cloud);line-height:1.9;opacity:.9;}
 .hover-desc{font-family:'Jost',sans-serif;font-weight:200;font-size:.75rem;color:var(--cloud);line-height:1.7;opacity:.85;margin-top:.5rem;}
@@ -484,6 +495,58 @@ footer{border-top:1px solid rgba(139,164,192,.08);background:linear-gradient(to 
     </div>
   </div>
 </div>
+
+  <!-- Mobile list layout (hidden on desktop via CSS) -->
+  <div class="alt-list reveal">
+
+    <div class="alt-row alto">
+      <div class="alt-row-header">
+        <span class="alt-row-level"><span class="es">Alto</span><span class="en">High</span></span>
+        <span class="alt-row-range">5 – 13 km</span>
+      </div>
+      <div class="alt-row-clouds">
+        <div class="alt-chip"><span class="alt-chip-ab">Ci</span><span class="alt-chip-nm"><span class="es">Cirro</span><span class="en">Cirrus</span></span></div>
+        <div class="alt-chip"><span class="alt-chip-ab">Cc</span><span class="alt-chip-nm"><span class="es">Cirrocúmulo</span><span class="en">Cirrocumulus</span></span></div>
+        <div class="alt-chip"><span class="alt-chip-ab">Cs</span><span class="alt-chip-nm"><span class="es">Cirroestrato</span><span class="en">Cirrostratus</span></span></div>
+      </div>
+    </div>
+
+    <div class="alt-row medio">
+      <div class="alt-row-header">
+        <span class="alt-row-level"><span class="es">Medio</span><span class="en">Middle</span></span>
+        <span class="alt-row-range">2 – 7 km</span>
+      </div>
+      <div class="alt-row-clouds">
+        <div class="alt-chip"><span class="alt-chip-ab">Ac</span><span class="alt-chip-nm"><span class="es">Altocúmulo</span><span class="en">Altocumulus</span></span></div>
+        <div class="alt-chip"><span class="alt-chip-ab">As</span><span class="alt-chip-nm"><span class="es">Altoestrato</span><span class="en">Altostratus</span></span></div>
+        <div class="alt-chip"><span class="alt-chip-ab">Ns</span><span class="alt-chip-nm"><span class="es">Nimboestrato</span><span class="en">Nimbostratus</span></span></div>
+      </div>
+    </div>
+
+    <div class="alt-row bajo">
+      <div class="alt-row-header">
+        <span class="alt-row-level"><span class="es">Bajo</span><span class="en">Low</span></span>
+        <span class="alt-row-range">0 – 2 km</span>
+      </div>
+      <div class="alt-row-clouds">
+        <div class="alt-chip"><span class="alt-chip-ab">Sc</span><span class="alt-chip-nm"><span class="es">Estratocúmulo</span><span class="en">Stratocumulus</span></span></div>
+        <div class="alt-chip"><span class="alt-chip-ab">St</span><span class="alt-chip-nm"><span class="es">Estrato</span><span class="en">Stratus</span></span></div>
+        <div class="alt-chip"><span class="alt-chip-ab">Cu</span><span class="alt-chip-nm"><span class="es">Cúmulo</span><span class="en">Cumulus</span></span></div>
+      </div>
+    </div>
+
+    <div class="alt-row vertical">
+      <div class="alt-row-header">
+        <span class="alt-row-level"><span class="es">Vertical</span><span class="en">Vertical</span></span>
+        <span class="alt-row-range">0 – 18 km</span>
+      </div>
+      <div class="alt-row-clouds">
+        <div class="alt-chip"><span class="alt-chip-ab">Cb</span><span class="alt-chip-nm">Cumulonimbus</span></div>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
 <hr class="section-divider">
@@ -1599,19 +1662,12 @@ setLang(currentLang);
 
 // ── Mobile tap-to-reveal ────────────────────────────────────
 (function setupMobileCards() {
-  // inject tap hint + close button into every card
+  // inject tap hint into every card
   document.querySelectorAll('.cloud-card, .var-card').forEach(card => {
     const hint = document.createElement('div');
     hint.className = 'tap-hint';
     hint.innerHTML = '<span class="es">toca para ver</span><span class="en">tap to reveal</span>';
     card.appendChild(hint);
-
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'hover-close';
-    closeBtn.innerHTML = '✕';
-    closeBtn.setAttribute('aria-label', 'Cerrar');
-    const hoverEl = card.querySelector('.card-hover');
-    if (hoverEl) hoverEl.appendChild(closeBtn);
   });
 
   function closeAll(except) {
@@ -1620,18 +1676,10 @@ setLang(currentLang);
     });
   }
 
+  // tap toggles the panel; tap again closes it
   document.querySelectorAll('.cloud-card, .var-card').forEach(card => {
-    // close button always gets a listener (CSS hides it on desktop)
-    const closeBtn = card.querySelector('.hover-close');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        card.classList.remove('active');
-      });
-    }
-    // card tap: open panel (skip if tapping speak or close)
     card.addEventListener('click', function(e) {
-      if (e.target.closest('.speak-btn') || e.target.closest('.hover-close')) return;
+      if (e.target.closest('.speak-btn')) return;
       if (this.classList.contains('active')) {
         this.classList.remove('active');
         return;
