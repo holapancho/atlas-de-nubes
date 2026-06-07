@@ -28,3 +28,5 @@ HTML + CSS + JS en un único archivo estático. Sin frameworks ni dependencias e
 ## Autor
 
 Francisco Rojas Morales — [@holapanch0](https://www.instagram.com/holapanch0) · [LinkedIn](https://www.linkedin.com/in/francisco-rojas-morales-26388a24/)
+
+Si te fue útil, puedes [invitarme un café](https://www.paypal.com/donate/?business=roja_chenp%40hotmail.com) ☕
